@@ -1,4 +1,4 @@
-xfsdump-3.0.6 (14 October 2011)
+xfsdump-3.0.6 (-d February 2012)
 	- Unconditionally add checksums to various dump headers in
 	  xfsdump.
 	- Verify dump header checksums if present in xfsrestore.
