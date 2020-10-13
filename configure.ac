@@ -1,5 +1,6 @@
-AC_INIT(common/main.c)
-AC_PREREQ(2.50)
+AC_INIT
+AC_CONFIG_SRCDIR([common/main.c])
+AC_PREREQ([2.69.185-b502e])
 AC_CONFIG_AUX_DIR([.])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER(include/config.h)
@@ -83,4 +84,5 @@ AC_PACKAGE_NEED_ATTRGET_LIBATTR
 
 AC_MANUAL_FORMAT
 
-AC_OUTPUT(include/builddefs)
+AC_CONFIG_FILES([include/builddefs])
+AC_OUTPUT

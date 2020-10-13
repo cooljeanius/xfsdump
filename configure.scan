@@ -1,0 +1,59 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69.185-b502e])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_CONFIG_SRCDIR([dump/inomap.c])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_FUNC_ALLOCA
+AC_CHECK_HEADERS([fcntl.h libintl.h malloc.h mntent.h stdint.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/statvfs.h termios.h unistd.h utime.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_UID_T
+AC_C_INLINE
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_MODE_T
+AC_TYPE_OFF_T
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
+AC_CHECK_MEMBERS([struct stat.st_rdev])
+AC_TYPE_UINT64_T
+
+# Checks for library functions.
+AC_FUNC_CHOWN
+AC_FUNC_FORK
+AC_FUNC_GETMNTENT
+AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
+AC_HEADER_MAJOR
+AC_FUNC_MALLOC
+AC_FUNC_MKTIME
+AC_FUNC_MMAP
+AC_FUNC_REALLOC
+AC_CHECK_FUNCS([alarm atexit bzero fdatasync ftruncate getcwd gethostname getmntent getpagesize lchown memmove memset mkdir munmap realpath rmdir select setlocale socket strcasecmp strchr strcspn strdup strerror strtol strtoull utime])
+
+AC_CONFIG_FILES([Makefile
+                 common/Makefile
+                 debian/Makefile
+                 doc/Makefile
+                 dump/Makefile
+                 include/Makefile
+                 inventory/Makefile
+                 invutil/Makefile
+                 librmt/Makefile
+                 m4/Makefile
+                 man/Makefile
+                 man/man8/Makefile
+                 po/Makefile
+                 restore/Makefile])
+AC_OUTPUT
