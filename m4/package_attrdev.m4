@@ -71,10 +71,9 @@ AC_DEFUN([AC_PACKAGE_NEED_ATTRGET_LIBATTR],
 
 AC_DEFUN([AC_PACKAGE_NEED_ATTRIBUTES_MACROS],
   [ AC_MSG_CHECKING([macros in attr/attributes.h])
-    AC_TRY_LINK([
+    AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 #include <sys/types.h>
-#include <attr/attributes.h>],
-    [ int x = ATTR_SECURE; ], [ echo ok ], [
+#include <attr/attributes.h>]], [[ int x = ATTR_SECURE; ]])],[ echo ok ],[
         echo
 	echo 'FATAL ERROR: could not find a current attributes header.'
         echo 'Upgrade the extended attributes (attr) development package.'

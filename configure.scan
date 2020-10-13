@@ -7,15 +7,20 @@ AC_CONFIG_SRCDIR([dump/inomap.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
 AC_PROG_CC
+AC_PROG_CPP
 AC_PROG_INSTALL
+AC_PROG_LN_S
 AC_PROG_MAKE_SET
+AC_PROG_RANLIB
 
 # Checks for libraries.
 
 # Checks for header files.
 AC_FUNC_ALLOCA
-AC_CHECK_HEADERS([fcntl.h libintl.h malloc.h mntent.h stdint.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/statvfs.h termios.h unistd.h utime.h])
+AC_CHECK_HEADERS([fcntl.h malloc.h mntent.h stdint.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h sys/statvfs.h termios.h unistd.h utime.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_UID_T
