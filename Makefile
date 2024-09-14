@@ -31,8 +31,9 @@ CONFIGURE = aclocal.m4 configure config.guess config.sub install-sh ltmain.sh
 LSRCFILES = configure.in release.sh README VERSION $(CONFIGURE)
 
 LDIRT = config.log .ltdep .dep config.status config.cache confdefs.h \
-	conftest* built .census install.* install-dev.* *.gz \
-	autom4te.cache/* libtool include/builddefs include/config.h
+	conftest* built .census install.* install-dev.* *.gz *~ \
+	autom4te.cache/* libtool include/builddefs include/config.h \
+	autoscan.log
 
 ifeq ($(HAVE_BUILDDEFS), yes)
 LDIRDIRT = $(SRCDIR)
@@ -96,6 +97,7 @@ install-dev: default $(addsuffix -install-dev,$(SUBDIRS))
 
 distclean: clean
 	rm -f $(LDIRT)
+	-rm -rf autom4te.cache || rmdir autom4te.cache
 
 realclean: distclean
 	rm -f $(CONFIGURE)

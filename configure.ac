@@ -11,10 +11,41 @@ AC_PREFIX_DEFAULT([/usr])
 
 # Checks for programs.
 AC_PROG_CC
+if test "x${CPP}" = "x"; then
+  test -z "${CPP}" || unset CPP
+  AC_PROG_CPP
+else
+  test -n "${CPP}" && export CPP
+fi
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
-
+if test "x${AR}" = "x"; then
+  test -z "${AR}" || unset AR
+  AC_CHECK_TOOLS([AR],[ar gar])dnl
+  ## might want to switch around these checks...
+  if test "x${ac_cv_prog_AR}" = "x"; then
+    test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+    m4_ifdef([AC_PROG_AR],[
+      AC_PROG_AR
+    ],[
+      test -x "`which ar`" && echo "first ar in path is `which ar`"
+    ])
+  fi
+else
+  test -n "${AR}" && export AR
+fi
+AC_DEFUN([AC_REQUIRE_RANLIB],[
+  AC_REQUIRE([AC_PROG_RANLIB])dnl
+])
+if test "x${RANLIB}" = "x"; then
+  test -z "${RANLIB}" && test -z "${ac_cv_prog_ac_ct_RANLIB}"
+  AC_REQUIRE_RANLIB
+else
+  test -n "${RANLIB}" && export RANLIB
+  AC_SUBST([RANLIB])
+fi
 LT_INIT
+LT_LANG([C])dnl
 
 # flags that can be passed to this configure script:
 AC_ARG_ENABLE([shared],
@@ -108,15 +139,15 @@ AC_CHECK_FUNCS([atexit bzero fdatasync ftruncate getcwd gethostname lchown \
                 strtoull utime])dnl
 
 if test "x${ac_cv_func_alarm}" = "x"; then
-  test -z "${ac_cv_func_alarm}"
+  test -z "${ac_cv_func_alarm}" || unset ac_cv_func_alarm
   AC_CHECK_FUNCS([alarm])
 fi
 if test "x${ac_cv_func_getmntent}" = "x"; then
-  test -z "${ac_cv_func_getmntent}"
+  test -z "${ac_cv_func_getmntent}" || unset ac_cv_func_getmntent
   AC_CHECK_FUNCS([getmntent])
 fi
 if test "x${ac_cv_func_getpagesize}" = "x"; then
-  test -z "${ac_cv_func_getpagesize}"
+  test -z "${ac_cv_func_getpagesize}" || unset ac_cv_func_getpagesize
   AC_CHECK_FUNCS([getpagesize])
 fi
 

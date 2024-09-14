@@ -1,0 +1,2 @@
+configure.scan linguist-generated
+include/config.h.in linguist-generated
